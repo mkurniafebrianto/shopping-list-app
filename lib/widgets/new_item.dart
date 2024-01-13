@@ -41,6 +41,9 @@ class _NewItemState extends State<NewItem> {
           child: Column(
             children: [
               TextFormField(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
                 maxLength: 50,
                 decoration: const InputDecoration(
                   label: Text('Name'),
@@ -63,6 +66,9 @@ class _NewItemState extends State<NewItem> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         label: Text('Quantity'),
@@ -85,6 +91,9 @@ class _NewItemState extends State<NewItem> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: DropdownButtonFormField(
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
                       value: _selectedCategory,
                       items: [
                         for (final category in categories.entries)

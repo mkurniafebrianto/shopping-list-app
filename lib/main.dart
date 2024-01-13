@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_list/widgets/grocery_list.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
           surface: const Color.fromARGB(255, 42, 51, 59),
         ),
         scaffoldBackgroundColor: const Color.fromARGB(255, 50, 58, 60),
+        textTheme: GoogleFonts.latoTextTheme(),
       ),
       home: const GroceryList(),
     );

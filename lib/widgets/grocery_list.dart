@@ -29,6 +29,42 @@ class _GroceryListState extends State<GroceryList> {
 
   @override
   Widget build(BuildContext context) {
+    Widget content = ListView.builder(
+      itemCount: _groceryItems.length,
+      itemBuilder: ((context, index) => ListTile(
+            title: Text(_groceryItems[index].name),
+            leading: Container(
+              width: 24,
+              height: 24,
+              color: _groceryItems[index].category.color,
+            ),
+            trailing: Text(_groceryItems[index].quantity.toString()),
+          )),
+    );
+
+    if (_groceryItems.isEmpty) {
+      content = Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'There is no list here!',
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Press the button in the top right corner to add items',
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            )
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Groceries'),
@@ -39,18 +75,7 @@ class _GroceryListState extends State<GroceryList> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: _groceryItems.length,
-        itemBuilder: ((context, index) => ListTile(
-              title: Text(_groceryItems[index].name),
-              leading: Container(
-                width: 24,
-                height: 24,
-                color: _groceryItems[index].category.color,
-              ),
-              trailing: Text(_groceryItems[index].quantity.toString()),
-            )),
-      ),
+      body: content,
     );
   }
 }
